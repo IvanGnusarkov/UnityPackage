@@ -1,23 +1,40 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Resetter : MonoBehaviour {
-    public string[] resettableObjectsNames;
+internal struct ObjectInfo {
+    public GameObject go;
+    public Vector3 position;
+    public Quaternion rotation;
+}
 
-    private readonly Dictionary<string, GameObject> resettableObjects = new Dictionary<string, GameObject>();
-    private readonly Dictionary<string, Vector3> positions = new Dictionary<string, Vector3>();
+public class Resetter : MonoBehaviour {
+    public List<GameObject> objectsToReset;
+
+    private readonly List<ObjectInfo> infos = new List<ObjectInfo>();
 
     private void Start() {
-        foreach (string goName in resettableObjectsNames) {
-            GameObject go = GameObject.Find(goName);
-            resettableObjects.Add(goName, go);
-            positions.Add(goName, go.transform.position);
-        }
+        objectsToReset.ForEach(resettableObject => {
+            Transform oTransform = resettableObject.transform;
+            infos.Add(new ObjectInfo {
+                go = resettableObject,
+                position = oTransform.position,
+                rotation = oTransform.rotation
+            });
+        });
     }
 
-    public void reset() {
-        foreach (KeyValuePair<string,GameObject> pair in resettableObjects) {
-            pair.Value.transform.position = positions[pair.Key];
-        }
+    public void resetEverything() {
+        infos.ForEach(info => {
+            GameObject go = info.go;
+            Transform goTransform = go.transform;
+            goTransform.position = info.position;
+            goTransform.rotation = info.rotation;
+
+            Rigidbody goBody = go.GetComponent<Rigidbody>();
+            if (goBody != null) {
+                goBody.velocity = Vector3.zero;
+                goBody.angularVelocity = Vector3.zero;
+            }
+        });
     }
 }

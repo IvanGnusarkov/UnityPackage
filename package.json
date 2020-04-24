@@ -1,0 +1,19 @@
+{
+  "name": "com.ivankapitan.unity",
+  "version": "0.0.1",
+  "displayName": "Ivan Kapitan Unity Library",
+  "description": "Fok yea",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "dependencies": {
+
+  },
+  "keywords": [
+
+  ],
+  "author": {
+    "name": "Ivan Gnusarkov",
+    "email": "ivankapitan@live.ru",
+    "url": "https://www.unity3d.com"
+  }
+}

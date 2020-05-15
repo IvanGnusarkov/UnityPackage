@@ -6,11 +6,9 @@ namespace IvanScripts.Lang {
 
         public static T getInstance() {
             if (INSTANCE == null) {
-                INSTANCE = FindObjectOfType<T>();
-                if (INSTANCE == null) {
-                    Debug.LogError($"Не найден инстанс {typeof(T).FullName}");
-                }
+                Debug.LogError($"Не найден инстанс {typeof(T).FullName}");
             }
+
             return INSTANCE;
         }
 

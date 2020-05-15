@@ -1,6 +1,17 @@
 using UnityEngine;
 
 public static class RaycastUtils {
+
+    public static Transform raycastObject(Camera camera) {
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit)) {
+            return hit.transform;
+        }
+
+        return null;
+    }
+
     public static Vector3? raycastPosition(Camera camera) {
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 

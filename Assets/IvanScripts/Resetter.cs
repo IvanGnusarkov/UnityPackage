@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
+using IvanScripts.Lang;
 using UnityEngine;
 
 internal struct ObjectInfo {
@@ -7,7 +10,7 @@ internal struct ObjectInfo {
     public Quaternion rotation;
 }
 
-public class Resetter : MonoBehaviour {
+public class Resetter: Singleton<Resetter> {
     public List<GameObject> objectsToReset;
 
     private readonly List<ObjectInfo> infos = new List<ObjectInfo>();
@@ -36,5 +39,20 @@ public class Resetter : MonoBehaviour {
                 goBody.angularVelocity = Vector3.zero;
             }
         });
+    }
+
+    public void resetSmoothly(float delay, float duration) {
+        StartCoroutine(resetSmoothlyCoroutine(delay, duration));
+    }
+
+    private IEnumerator resetSmoothlyCoroutine(float delay, float duration) {
+        yield return new WaitForSecondsRealtime(delay);
+        foreach (ObjectInfo info in infos) {
+            Transform tr = info.go.transform;
+            tr.DOMove(info.position, duration);
+            tr.DORotate(info.rotation.eulerAngles, duration);
+        }
+
+        yield return null;
     }
 }

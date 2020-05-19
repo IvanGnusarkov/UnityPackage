@@ -12,6 +12,16 @@ public static class RaycastUtils {
         return null;
     }
 
+    public static RaycastHit? rayCastHit(Camera camera) {
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit)) {
+            return hit;
+        }
+
+        return null;
+    }
+
     public static Vector3? raycastPosition(Camera camera) {
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 

@@ -1,16 +1,14 @@
-﻿using UnityEngine;
+﻿using IvanScripts.Lang;
 using UnityEngine.UI;
 
-public class DebugText : MonoBehaviour {
-    private static DebugText INSTANCE;
+public class DebugText : Singleton<DebugText> {
     private Text textComponent;
 
     public static void debug(string text) {
-        INSTANCE.debugInternal(text);
+        getInstance().debugInternal(text);
     }
 
     private void Start() {
-        INSTANCE = this;
         textComponent = GetComponent<Text>();
     }
 

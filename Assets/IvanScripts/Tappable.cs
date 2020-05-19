@@ -1,3 +1,5 @@
-public interface Tappable {
-    void onTap();
+namespace IvanScripts {
+    public interface Tappable {
+        void onTap();
+    }
 }

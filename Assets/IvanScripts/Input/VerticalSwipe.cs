@@ -4,7 +4,7 @@ namespace IvanScripts {
     public class VerticalSwipe : Swipe {
         private readonly float completePixelLength;
 
-        public VerticalSwipe(float completePixelLength, Swipeable target) : base(target) {
+        public VerticalSwipe(Swipeable target, float completePixelLength) : base(target) {
             this.completePixelLength = completePixelLength;
         }
 

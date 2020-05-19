@@ -1,5 +1,6 @@
 namespace IvanScripts {
     public interface Swipeable : Tappable {
-        void onSwipe();
+        Swipe onSwipeStart();
+        void onSwipeContinue(float percent);
     }
 }

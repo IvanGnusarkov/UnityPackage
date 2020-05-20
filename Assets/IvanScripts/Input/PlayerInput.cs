@@ -13,6 +13,7 @@ public class PlayerInput : Singleton<PlayerInput> {
         }
 
         Debug.Log($"Tap on {tapTarget.name}");
+        Debug.Log("mesh " + tapTarget.GetComponent<MeshFilter>()?.sharedMesh?.name);
 
         Tappable tappable = tapTarget.GetComponent<Tappable>();
         tappable?.onTap();

@@ -7,7 +7,7 @@ namespace IvanScripts {
             gameObject.transform.DOShakeRotation(duration, strength: strength);
         }
 
-        public static void shakeZ(GameObject gameObject, float duration, float strength = 20f) {
+        public static void shakeZ(GameObject gameObject, float duration, float strength = 30f) {
             gameObject.transform.DOShakeRotation(duration, Vector3.forward * strength);
         }
     }

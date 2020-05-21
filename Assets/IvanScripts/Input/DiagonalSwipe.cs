@@ -14,5 +14,9 @@ namespace IvanScripts {
             Vector3 diff = start - now;
             return diff.magnitude / length;
         }
+
+        public override void setPercent(float percent) {
+            startPosition = Input.mousePosition + percent * length * new Vector3(1,1, 0);
+        }
     }
 }

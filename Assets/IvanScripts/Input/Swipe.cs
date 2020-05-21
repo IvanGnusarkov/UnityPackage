@@ -8,11 +8,6 @@ namespace IvanScripts {
 
         protected Swipe(Swipeable target) {
             this.target = target;
-            setStartPosition(Input.mousePosition);
-        }
-
-        public void setStartPosition(Vector3 mousePosition) {
-            startPosition = mousePosition;
         }
 
         public void onSwipeContinue() {
@@ -20,5 +15,6 @@ namespace IvanScripts {
         }
 
         protected abstract float calculatePercent();
+        public abstract void setPercent(float percent);
     }
 }

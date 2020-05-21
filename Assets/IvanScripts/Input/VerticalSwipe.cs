@@ -11,5 +11,9 @@ namespace IvanScripts {
         protected override float calculatePercent() {
             return (startPosition.y - Input.mousePosition.y) / completePixelLength;
         }
+
+        public override void setPercent(float percent) {
+            startPosition = Input.mousePosition + percent * completePixelLength * Vector3.up;
+        }
     }
 }

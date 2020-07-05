@@ -37,6 +37,7 @@ public static class RaycastUtils {
         if (!position.HasValue) {
             return null;
         }
+
         Vector3 result = position.Value;
 
         if (x.HasValue) result.x = x.Value;

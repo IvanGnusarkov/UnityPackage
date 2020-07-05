@@ -5,14 +5,21 @@ namespace IvanScripts.Lang {
         private static T INSTANCE;
 
         public static T getInstance() {
-            if (INSTANCE == null) {
-                Debug.LogError($"Не найден инстанс {typeof(T).FullName}");
+            if (INSTANCE != null) {
+                return INSTANCE;
+            }
+
+            T instance = FindObjectOfType<T>();
+            if (instance == null) {
+                Debug.LogError($"Не найден инстанс {typeof(T)}");
+            } else {
+                INSTANCE = instance;
             }
 
             return INSTANCE;
         }
 
-        private void Awake() {
+        protected virtual void Awake() {
             INSTANCE = this as T;
         }
     }

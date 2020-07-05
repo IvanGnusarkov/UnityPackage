@@ -1,12 +1,14 @@
-﻿using System;
-using IvanScripts;
+﻿using IvanScripts;
 using IvanScripts.Lang;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class PlayerInput : Singleton<PlayerInput> {
     private Swipe currentSwipe;
 
+    private void Start() {
+        
+    }
+    
     private void onTap(Transform tapTarget) {
         if (tapTarget == null) {
             return;
